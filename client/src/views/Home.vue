@@ -36,8 +36,10 @@ export default {
   },
   methods: {
     enterGame () {
+      console.log(this.user)
+      localStorage.username = this.user.username
       this.$store.dispatch('enterGame')
-      this.$store.dispatch('addPlayer', this.user)
+      this.$socket.emit('fungsiSaatLogin', this.user)
     }
   }
 }

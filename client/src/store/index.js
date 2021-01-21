@@ -7,34 +7,26 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     items: {},
-    users: [],
-    player: {
-      username: '',
-      score: ''
-    }
+    players: []
   },
   mutations: {
-    addPlayer (state, payload) {
-      state.player.username = payload.username
-      state.player.score = payload.score
-    },
     setItems (state, payload) {
       state.items = payload
     },
-    setUsers (state, payload) {
-      state.users = payload
+    setPlayers (state, payload) {
+      state.players = payload
     }
   },
   actions: {
     enterGame (context, payload) {
       router.push('/dashboard')
-      context.commit('addPlayer', payload)
+      context.commit('setPlayers', payload)
+    },
+    SOCKET_playerList (context, payload) {
+      context.commit('setPlayers', payload)
     },
     SOCKET_fetchItems (context, payload) {
       context.commit('setItems', payload)
-    },
-    SOCKET_fetchUsers (context, payload) {
-      context.commit('setUsers', payload)
     }
   },
   modules: {
