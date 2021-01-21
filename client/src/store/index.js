@@ -27,6 +27,10 @@ export default new Vuex.Store({
     },
     SOCKET_fetchItems (context, payload) {
       context.commit('setItems', payload)
+    },
+    logout (context, payload) {
+      router.push('/')
+      localStorage.clear()
     }
   },
   modules: {

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <button @click.prevent="logout"> Logout </button>
     <!-- <h3>Guess all the item's price in <span id="time" style="color: red"></span> seconds!</h3><br> -->
     <h1>Scoreboard:</h1>
     <h3>{{players}}</h3>
@@ -26,6 +27,11 @@ export default {
     },
     players () {
       return this.$store.state.players
+    }
+  },
+  methods: {
+    logout () {
+      return this.$store.dispatch('logout')
     }
   }
 }
