@@ -5,11 +5,19 @@
       <div class="" style="height: 75px">
         <p>{{item.name}}</p>
       </div>
-      <div>
-        <input type="number" placeholder="ie. 17500" v-model="price">
+      <!-- Guess Form -->
+      <div v-if="isGuessed === false">
+        <div>
+          <input type="number" placeholder="ie. 17500" v-model="price">
+        </div>
+        <div>
+          <button class="btn btn-primary m-3" @click.prevent="guessPrice">Guess!</button>
+        </div>
       </div>
-      <div>
-        <button class="btn btn-primary m-3" @click.prevent="guessPrice">Guess!</button>
+      <!-- Guess Success! -->
+      <div v-if="isGuessed === true">
+        <p>You guessed:</p>
+        <h1>{{price}}</h1>
       </div>
     </div>
   </div>
@@ -22,15 +30,19 @@ export default {
   data () {
     return {
       id: this.item.id,
-      price: ''
+      price: '',
+      isGuessed: false
     }
   },
   methods: {
     guessPrice () {
       const payload = {
         id: this.id,
-        price: +this.price
+        price: +this.price,
+        username: this.$store.state.username
+
       }
+      this.isGuessed = true
       this.$socket.emit('guessPrice', payload)
     }
   }
