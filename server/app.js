@@ -4,7 +4,7 @@ const io = require('socket.io')(server);
 const { getScore } = require('./function')
 
 let dataItems = require('./products.json')
-let players = []  //isi didapat saat login // untuk dikirim ke client
+let players = []  //isi didapat saat login // username dan skor yg ditampilkan client didapat dari sini
 // contoh isi player = [
 //     {
 //         username: 'aa',
@@ -22,15 +22,24 @@ io.on('connection', (socket) => {
   console.log('Socket.io client connected');
   socket.emit('fetchItems', dataItems)
 
-  socket.on('fungsiSaatLogin', function(payload) {
+  socket.on('fungsiSaatLogin', function(payload) { //saat login data player disimpan di array players
       console.log(payload)
       players.push(payload)
       socket.broadcast.emit('playerList', players)
   })
 
-  socket.on('submitTebakan', function(payload) {
+  socket.on('submitTebakan', function(payload) { // saat submit tebakan 
       console.log(payload)
-      let skor = getScore('harga asli dari json', payload.price) 
+      const fs = require('fs')
+      let realPrice = 0
+      let products = JSON.parse(fs.readFileSync('./products.json', 'utf-8'))
+      for (i = 0; i < products.length; i++) {
+          if (products[i].id == payload.id) {
+              realPrice = products.price
+          }
+      }
+
+      let skor = getScore(realPrice, payload.price) 
       for (i = 0; i < players.length; i++) {
           if (players[i].username == payload.username) {
               players[i].score += skor
