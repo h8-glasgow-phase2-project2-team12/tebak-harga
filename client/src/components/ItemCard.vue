@@ -1,17 +1,17 @@
 <template>
-  <div class="card m-2 col-2" style="width: 12rem;">
-    <img class="card-img-top m-2" :src="item.imageUrl" alt="Card image cap" width="150" height="150">
+  <div class="card-card">
+    <div class="image">
+    <img class="img" :src="item.imageUrl" alt="Card image cap">
+    </div>
     <div class="card-body">
-      <div class="" style="height: 75px">
         <p>{{item.name}}</p>
-      </div>
       <!-- Guess Form -->
       <div v-if="isGuessed === false">
         <div>
           <input type="number" placeholder="ie. 17500" v-model="price">
         </div>
         <div>
-          <button class="btn btn-primary m-3" @click.prevent="guessPrice">Guess!</button>
+          <button class="guess-button" @click.prevent="guessPrice">Guess!</button>
         </div>
       </div>
       <!-- Guess Success! -->

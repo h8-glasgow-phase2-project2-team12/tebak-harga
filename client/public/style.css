@@ -1,0 +1,220 @@
+@import url("https://fonts.googleapis.com/css2?family=Bungee&family=Roboto:wght@100;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Quicksand:wght@300;400;500;700&display=swap");
+
+:root {
+  --small-font: "Quicksand", sans-serif;
+  --big-font: "Bungee", cursive;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+  font-family: var(--small-font);
+}
+
+.login-page {
+  background: url("https://images.unsplash.com/photo-1524673450801-b5aa9b621b76?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  margin: 0 auto;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: var(--small-font);
+}
+
+h2 {
+  font-family: var(--big-font);
+  color: white;
+}
+
+.form {
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.342);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 30px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+  width: 500px;
+  padding: 10px;
+  max-width: 100%;
+  min-height: 300px;
+}
+.form h2 {
+  color: rgb(61, 161, 228);
+}
+
+.btn {
+  color: white;
+  background-color: rgb(86, 175, 235);
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 15px;
+  text-transform: uppercase;
+  width: 100%;
+  cursor: pointer;
+}
+
+input {
+  background-color: white;
+  border: none;
+  padding: 10px;
+  margin: 8px 0;
+  width: 100%;
+}
+input[type="submit"]:hover {
+  background-color: rgb(61, 161, 228);
+  color: rgb(100, 100, 100);
+}
+
+.title {
+  margin-bottom: 40px;
+  font-family: var(--big-font);
+  font-size: 3rem;
+}
+h1 {
+  color: #e76f89;
+  font-family: var(--big-font);
+  font-size: 3rem;
+}
+.scoreboard {
+  padding: 2px;
+}
+
+.itemsContainer {
+  justify-content: center;
+}
+
+.card-card {
+  padding: 5px;
+  overflow: hidden;
+  margin: 15px;
+  width: 220px;
+  height: 380px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  justify-content: center;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25), 0 2px 5px rgba(0, 0, 0, 0.22);
+}
+.card-card img {
+  width: 180px;
+  height: 180px;
+  margin-top: 5px;
+  border-radius: 15px;
+}
+.card-card input {
+  border-radius: 20px;
+}
+
+.card-card:hover {
+  position: relative;
+  top: -5px;
+}
+
+.card-card p {
+  margin-bottom: 0;
+  font-size: 1rem;
+  color: rgb(85, 85, 85);
+}
+
+.guess-button {
+  width: 200px;
+  border: none;
+  background-color: pink;
+  padding: 10px;
+  border-radius: 10px;
+  color: rgb(65, 63, 63);
+  margin-bottom: 5px;
+  position: absolute;
+  bottom: -10px;
+  transform: translate(-50%, -50%);
+}
+.guess-button:hover {
+  background-color: rgb(248, 166, 179);
+  color: white;
+  transition: ease-in;
+}
+
+.content {
+  width: 100%;
+  margin: 0 auto 50px auto;
+}
+.countdown {
+  font-size: 1.2rem;
+  font-family: var(--big-font);
+  color: rgb(252, 96, 96);
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px;
+}
+.players {
+  font-size: 1rem;
+  width: 500px;
+  background-color: rgb(243, 204, 204) smoke;
+  border-radius: 4px;
+  padding: 5px;
+}
+.players h4 {
+  font-size: 0.9 rem;
+  font-weight: bold;
+  color: rgb(143, 229, 250);
+  font-family: var(--small-font);
+  background-color: rgb(56, 55, 55);
+  border-radius: 5px;
+  padding: 3px;
+  width: 400px;
+}
+.players h5 {
+  color: rgb(35, 166, 226);
+  background-color: white;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+.logout-button {
+  width: 400px;
+}
+
+.logout-button button {
+  padding: 5px;
+  width: 100px;
+  background-color: rgb(199, 43, 43);
+  border: none;
+  font-weight: bold;
+  color: white;
+  border-radius: 11px;
+}
+.logout-button button:hover {
+  background-color: rgb(255, 58, 58);
+}
+.player p {
+  color: rgb(54, 54, 54);
+  font-size: 1.2rem;
+  margin: 4px;
+  border-radius: 3px;
+  padding: 2px;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 20%;
+}
+.player span {
+  color: #e76f89;
+}
