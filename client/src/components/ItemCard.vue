@@ -39,7 +39,7 @@ export default {
       const payload = {
         id: this.id,
         price: +this.price,
-        username: this.$store.state.username
+        username: localStorage.username
 
       }
       this.isGuessed = true
