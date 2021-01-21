@@ -6,11 +6,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    items: {},
+    users: [],
     player: {
       username: '',
-      score: '',
-      items: {},
-      users: []
+      score: ''
     }
   },
   mutations: {
@@ -18,10 +18,10 @@ export default new Vuex.Store({
       state.player.username = payload.username
       state.player.score = payload.score
     },
-      setItems (state, payload) {
+    setItems (state, payload) {
       state.items = payload
     },
-      setUsers (state, payload) {
+    setUsers (state, payload) {
       state.users = payload
     }
   },
