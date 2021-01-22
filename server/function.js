@@ -1,11 +1,11 @@
 function getScore(hargaAsli, tebakan) {
     let skor = 0
     if (tebakan <= hargaAsli) {
-        skor = (tebakan / hargaAsli) * 10
+        skor = (tebakan / hargaAsli) * 100
     } else {
-        skor = (hargaAsli / tebakan) * 10
+        skor = (hargaAsli / tebakan) * 100
     }
-    skor = Math.round(skor * 10) / 10
+    skor = Math.round(skor * 1) / 1
     
     return skor
 }

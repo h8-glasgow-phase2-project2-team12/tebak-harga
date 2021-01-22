@@ -99,13 +99,22 @@ export default {
       }, 1000)
     },
     start () {
-      var timer = 5
+      var timer = 30
       var display = document.querySelector('#time')
       this.startTimer(timer, display)
     },
     play () {
       this.isTimerStop = false
       this.start()
+      const tempUsername = localStorage.username
+      this.$socket.emit('logoutServer', localStorage.username)
+      this.$store.dispatch('logout')
+      localStorage.username = tempUsername
+      this.$store.dispatch('enterGame')
+      this.$socket.emit('fungsiSaatLogin', {
+        username: tempUsername,
+        score: 0
+      })
     }
   },
   mounted () {

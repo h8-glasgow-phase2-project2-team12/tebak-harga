@@ -11,7 +11,16 @@ export default new Vuex.Store({
   },
   mutations: {
     setItems (state, payload) {
-      state.items = payload
+      // shuffle the items
+      var array = payload
+      for (let i = 10; i > 0; i--) {
+        const temp = array[i]
+        const j = Math.floor(Math.random() * (i + 1))
+        array[i] = array[j]
+        array[j] = temp
+      }
+      const arraySliced = array.slice(0, 8)
+      state.items = arraySliced
     },
     setPlayers (state, payload) {
       state.players = payload
