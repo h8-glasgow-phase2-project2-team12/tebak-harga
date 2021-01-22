@@ -32,4 +32,20 @@ const router = new VueRouter({
   routes
 })
 
+function isAuthenticated() {
+  if (localStorage.username) {
+    return true
+  }
+  else {
+    return false
+  }
+}
+
+router.beforeEach((to, from, next) => {
+  console.log(to.name, isAuthenticated())
+  if (to.name !== 'Home' && !isAuthenticated()) next({ name: 'Home' })
+  else if (to.name === 'Home' && isAuthenticated()) next({ name: 'Dashboard' })
+  else next()
+})
+
 export default router
