@@ -1,20 +1,7 @@
-= [
-  [],
-  [],
-  [],
-
-]
-
-kanfz = pake akurasi 
-  2000
-  3000
-  akurasi = 50%
-
-  6000
-  akurasi = 90%
-
-  akurasi = 0%
-
-  akurasi = 0%
-
-  akurasi = 0%
+let temp = 5
+for (let index = 0; index < 10; index++) {
+  console.log('--temp', --temp);
+  console.log('temp', temp);
+  console.log('----------');
+  // --index -> index = index - 1
+}
