@@ -48,6 +48,7 @@ export default {
   },
   methods: {
     logout () {
+      this.$socket.emit('logoutServer', localStorage.username)
       return this.$store.dispatch('logout')
     }
   }

@@ -19,7 +19,6 @@ io.on('connection', (socket) => {
 
   socket.on('guessPrice', function(payload) { // saat submit tebakan 
       console.log(payload)
-      const fs = require('fs')
       let realPrice = 0
       for (i = 0; i < dataItems.length; i++) {
           if (dataItems[i].id == payload.id) {
@@ -37,6 +36,18 @@ io.on('connection', (socket) => {
       console.log('skor=', skor);
       console.log(players);
       socket.emit('playerList', players)
+  })
+
+  socket.on('logoutServer', function(payload) {
+    console.log(payload)
+    let tampung = players
+    players = []
+    for(i = 0; i < tampung.length; i++) {
+        if (tampung[i].username !== payload) {
+            players.push(tampung[i])
+        }
+    }
+    socket.emit('playerList', players)
   })
   
 });
