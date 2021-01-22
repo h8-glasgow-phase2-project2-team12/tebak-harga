@@ -12,7 +12,7 @@
         <h1>TEBAK HARGA</h1>
         <h4>Time left: <span id="time" class="countdown"></span> seconds!</h4><br>
     </div>
-    <div class="logout-button">
+    <div class="logout-button" v-if="!isTimerStop">
       <button @click.prevent="logout"> KELUAR </button>
     </div>
   </div>
@@ -24,20 +24,29 @@
         :item="item"/>
     </div>
   </div>
-  <div class="players" v-if="isTimerStop">
+  <div class="game-over" v-if="isTimerStop">
+    <h1>GAME OVER</h1>
     <h2>FINAL SCORE:</h2>
-      <Player
+      <GameOver
         v-for="player in players"
         :key="player.score"
         :player="player"/>
+    <div class="buttons">
+      <div class="play-button">
+        <button @click.prevent="play"> PLAY AGAIN </button>
+      </div>
+      <div class="logout-button">
+        <button @click.prevent="logout"> QUIT </button>
+      </div>
+    </div>
   </div>
-  <p>Group Project RMT07 Group 12 - Tebak Harga</p>
 </div>
 </template>
 
 <script>
 import ItemCard from '../components/ItemCard'
 import Player from '../components/Player'
+import GameOver from '../components/GameOver'
 
 export default {
   data () {
@@ -47,7 +56,8 @@ export default {
   },
   components: {
     ItemCard,
-    Player
+    Player,
+    GameOver
   },
   computed: {
     items () {
@@ -76,9 +86,6 @@ export default {
 
         display.textContent = minutes + ':' + seconds
 
-        // timer -= 1
-        // timer = duration
-        
         console.log('timer', timer)
         if (timer === 0) {
           // console.log('Timer should stop!')
@@ -95,13 +102,16 @@ export default {
       var timer = 5
       var display = document.querySelector('#time')
       this.startTimer(timer, display)
+    },
+    play () {
+      this.isTimerStop = false
+      this.start()
     }
   },
   mounted () {
     this.start()
   }
 }
-// window.onload = function () {
 </script>
 
 <style>

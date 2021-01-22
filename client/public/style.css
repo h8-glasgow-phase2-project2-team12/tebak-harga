@@ -162,7 +162,7 @@ h1 {
 
 .header {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   margin: 10px;
 }
@@ -217,4 +217,60 @@ h1 {
 }
 .player span {
   color: #e76f89;
+}
+
+.game-over {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  margin: 50px auto;
+}
+.game-over .logout-button button {
+  width: 350px;
+  margin: 20px;
+}
+.game-over .play-button button {
+  width: 350px;
+  margin: 20px;
+}
+.play-button button {
+  padding: 5px;
+  width: 100px;
+  background-color: rgb(43, 199, 191);
+  border: none;
+  font-weight: bold;
+  color: white;
+  border-radius: 11px;
+}
+.play-button button:hover {
+  background-color: rgb(31, 219, 210);
+}
+
+.game-over h1 {
+  color: black;
+  margin-bottom: 30px;
+}
+.game-over h2 {
+  color: rgb(61, 60, 60);
+  background-color: rgb(170, 224, 238);
+  padding: 5px;
+  margin: 3px;
+  width: 60%;
+  border-radius: 10px;
+}
+
+.game-over button {
+  padding: 20px;
+  font-family: var(--big-font);
+}
+.game-over h4 {
+  color: rgb(61, 60, 60);
+  font-weight: bold;
+  font-size: 1.5rem;
 }
