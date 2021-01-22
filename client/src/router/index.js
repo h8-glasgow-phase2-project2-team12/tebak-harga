@@ -32,11 +32,10 @@ const router = new VueRouter({
   routes
 })
 
-function isAuthenticated() {
+function isAuthenticated () {
   if (localStorage.username) {
     return true
-  }
-  else {
+  } else {
     return false
   }
 }

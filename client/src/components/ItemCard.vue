@@ -4,7 +4,7 @@
     <img class="img" :src="item.imageUrl" alt="Card image cap">
     </div>
     <div class="card-body">
-        <p>{{item.name}}</p>
+        <p style="height: 50px">{{item.name}}</p>
       <!-- Guess Form -->
       <div v-if="isGuessed === false">
         <div>
@@ -16,8 +16,8 @@
       </div>
       <!-- Guess Success! -->
       <div v-if="isGuessed === true">
-        <p>You guessed:</p>
-        <h1>{{price}}</h1>
+        <p>Your guess is:</p>
+        <h1 :class="{ 'text-success': isGreat, 'text-primary': isGood }">{{outcome}}</h1>
       </div>
     </div>
   </div>
@@ -31,7 +31,10 @@ export default {
     return {
       id: this.item.id,
       price: '',
-      isGuessed: false
+      isGuessed: false,
+      outcome: '',
+      isGreat: false,
+      isGood: false
     }
   },
   methods: {
@@ -40,10 +43,24 @@ export default {
         id: this.id,
         price: +this.price,
         username: localStorage.username
-
       }
+      this.qualityGuess()
       this.isGuessed = true
       this.$socket.emit('guessPrice', payload)
+    },
+    qualityGuess () {
+      const realPrice = this.item.price
+      const selisih = Math.abs(this.price - realPrice)
+      const selisihPercentage = selisih / realPrice
+      if (selisihPercentage < 0.2) {
+        this.outcome = 'GREAT!'
+        this.isGreat = true
+      } else if (selisihPercentage < 0.5) {
+        this.outcome = 'GOOD!'
+        this.isGood = true
+      } else {
+        this.outcome = 'BAD!'
+      }
     }
   }
 }
